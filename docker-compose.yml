@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  anomaly-detector:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    container_name: log-anomaly-detector
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+  # Example Spring Boot backend configuration
+  # spring-backend:
+  #   image: your-spring-app:latest
+  #   environment:
+  #     - ANOMALY_SERVICE_URL=http://anomaly-detector:8000
+  #   depends_on:
+  #     anomaly-detector:
+  #       condition: service_healthy
