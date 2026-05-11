@@ -25,7 +25,16 @@ Spring Boot Backend
 │                           ANOMALY     NORMAL    │
 └─────────────────────────────────────────────────┘
 ```
+---
 
+## 📊 Interactive Security Dashboard
+
+The service features a built-in, responsive web interface for real-time monitoring:
+
+* **Real-Time Analytics:** Monitors the ratio between normal traffic and anomalies using an interactive **Doughnut Chart** (Chart.js).
+* **Live History:** A dynamic activity log capturing every AI decision, anomaly score, and heuristic flag.
+* **Visual Alerts:** Immediate visual feedback with color-coded status badges (Green for Safe, Red for Anomaly).
+* **Tech Stack:** HTML5, Bootstrap 5, and Vanilla JavaScript (Fetch API).
 ---
 
 ## Quickstart
@@ -53,6 +62,10 @@ uvicorn app.main:app --reload
 ---
 
 ## API Reference
+
+### `GET /` (Dashboard)
+The main visual interface.  
+**Access:** Open `http://localhost:8000` in your browser.
 
 ### `GET /health`
 Liveness + readiness probe.
