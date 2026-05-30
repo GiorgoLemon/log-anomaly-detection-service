@@ -27,7 +27,7 @@ Spring Boot Backend
 ```
 ---
 
-## 📊 Interactive Security Dashboard
+## Interactive Security Dashboard
 
 The service features a built-in, responsive web interface for real-time monitoring:
 
